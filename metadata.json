@@ -1,0 +1,11 @@
+{
+  "name": "FaceFlow AI: Personal Appearance Analysis",
+  "description": "An AI-powered face analysis app that provides detailed feedback on facial symmetry, skin quality, and grooming with actionable improvement suggestions.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "Image analysis",
+    "Conversational AI"
+  ]
+}
