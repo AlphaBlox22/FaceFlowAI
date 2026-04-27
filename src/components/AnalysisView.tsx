@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MessageCircle, Sparkles, TrendingUp, Info, ChevronRight, CheckCircle2, Share2 } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Sparkles, TrendingUp, Info, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { AnalysisResult } from '../types';
 import { cn } from '../lib/utils';
 
@@ -18,43 +18,17 @@ export default function AnalysisView({ result, image, onBack, onChat }: Analysis
 
   if (!result || !image) return null;
 
-  const handleShare = async () => {
-    const shareData = {
-      title: 'My FaceFlow AI Analysis',
-      text: `Check out my FaceFlow AI analysis! Overall Score: ${result.scores.overall.toFixed(1)}/10. Potential: ${result.potential.score.toFixed(1)}/10.`,
-      url: window.location.href,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-        alert('Results copied to clipboard');
-      }
-    } catch (err) {
-      console.error('Error sharing:', err);
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-full bg-black">
       {/* Top Header */}
       <div className="px-6 py-4 flex items-center justify-between sticky top-0 z-30 bg-black/80 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <button onClick={onBack} className="p-2 rounded-full hover:bg-white/5 text-white">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#555]">Relativity Report</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <button onClick={handleShare} className="p-2 rounded-full hover:bg-white/5 text-white">
-            <Share2 className="w-4 h-4" />
-          </button>
-          <button onClick={onChat} className="p-2 rounded-full bg-white/5 text-white">
-            <MessageCircle className="w-5 h-5" />
-          </button>
-        </div>
+        <button onClick={onBack} className="p-2 rounded-full hover:bg-white/5 text-white">
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#555]">Relativity Report</span>
+        <button onClick={onChat} className="p-2 rounded-full bg-white/5 text-white">
+          <MessageCircle className="w-5 h-5" />
+        </button>
       </div>
 
       <div className="p-6 space-y-12">
